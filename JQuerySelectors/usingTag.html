@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" type="text/javascript">
+    </script>
+</head>
+
+<body>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("div").css('color', 'green');
+            $("p span").css('color', 'red');
+            $("tr td").css({ "border": "1px solid blue", "display": "inline" });
+            $("tr th").css({ "text-align": "center", "color": "blue", "padding-bottom": "1rem" });
+
+            $("button").click(function () {
+                $("tr td").css("color", "pink");
+            });
+
+            $("div i").each(function () {
+                alert($(this).html());
+            });
+        });
+    </script>
+    <table>
+        <tr>
+            <th>
+                JQUERY SELECTORS
+            </th>
+        </tr>
+        <tr>
+            <td>CELL1</td>
+            <td>CELL2</td>
+            <td>CELL3</td>
+            <td>CELL4</td>
+        </tr>
+        <tr>
+            <td>CELL5</td>
+            <td>CELL6</td>
+            <td>CELL7</td>
+            <td>CELL8</td>
+        </tr>
+    </table>
+    <button>ClickMe</button>
+
+    <div>
+        <p> Above is the example of the JQUERY SELECTORS using <span>TAG</span></p>
+    </div>
+    <div>
+        <i>Love what u do.</i>
+        <i>Do what u LOvE.</i>
+        <i>Learn to lovE what u need to do.</i>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        //click using ID Selector
+        $("#form").click(function(){
+        alert("form is submited");
+        }); 
+        //css using ID selector tag
+        $('#p1,#p2,#p3').css('color','green');
+
+        //css using class selector
+        $('.padding').css('margin-top','1em');
+        $('.alignment').css({'text-align':'center','color':'blue'});
+    });
+    </script>
+</head>
+
+<body>
+    <h1 class="alignment">Information Form</h1>
+    <form>
+        FirstName: <input type="text" class="padding"><br/>
+        LastName: <input type="text" class="padding"><br/>
+        MidName: <input type="text" class="padding"> <br/> 
+
+        MoblieNo: <input type="tel" class="padding"><br />
+        <P id="p1">Please fill your social media details:</P>
+        FbID: <input type="text">
+        InstrID: <input type="text">
+        WhatsAPPNo: <input type="text">
+        <p id="p2">Please select your gender:</p>
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">Female</label>
+        <input type="radio" id="other" name="gender" value="other">
+        <label for="other">Other</label>
+      
+        <br>  
+      
+        <p id="p3">Please select your age:</p>
+        <input type="radio" id="age1" name="age" value="30">
+        <label for="age1">0 - 30</label>
+        <input type="radio" id="age2" name="age" value="60">
+        <label for="age2">31 - 60</label>  
+        <input type="radio" id="age3" name="age" value="100">
+        <label for="age3">61 - 100</label><br><br>
+        <input type="submit" value="Submit" id="form">
+      </form>
+      
+</body>
+
+</html>
