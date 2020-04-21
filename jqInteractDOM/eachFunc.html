@@ -8,11 +8,17 @@
         $(document).ready(function () {
             $('label').css('color', 'green');
             //click using ID Selector
-            $("#form").click(function () {
-            $('form').each(function(index){
-                alert(index + '=' + $(this).append());
+            $("#submit").click(function () {
+                var gender = $("input[name=gender]:radio:checked").val();
+                var age = $("input[name=age]:radio:checked").val();
+                $("input[type=text]").each(function () {
+                    var formData = $(this).val();
+                    console.log(formData);
+                });
+                console.log(gender);
+                console.log(age);
             });
-            });
+
             //css using ID selector tag
             $('#p1,#p2,#p3').css('color', 'red');
 
@@ -23,9 +29,9 @@
             var exampleInput = $(':text');
             $('form').append(" found " + exampleInput.length + " InputElements ");
 
-            $('#form').css({ 'margin': '1rem 0', 'color': 'white', 'background-color': 'green' });
-       
-                
+            $('#submit').css({ 'margin': '1rem 0', 'color': 'white', 'background-color': 'green' });
+
+
         });
     </script>
     <script>
@@ -43,7 +49,7 @@
         <label>MidName:</label>
         <input type="text" class="padding"> <br />
         <label>MoblieNo:</label>
-        <input type="tel" class="padding"><br />
+        <input type="text" name="mobile" class="padding"><br />
         <P id="p1">Please fill your social media details:</P>
         <label>FbID:</label>
         <input type="text">
@@ -52,23 +58,23 @@
         <label>WhatsAPPNo:</label>
         <input type="text">
         <p id="p2">Please select your gender:</p>
-        <input type="radio" id="male" name="gender" value="male">
+        <input type="radio" name="gender" class="selectedGender" value="male">
         <label for="male">Male</label>
-        <input type="radio" id="female" name="gender" value="female">
+        <input type="radio" name="gender" class="selectedGender" value="female">
         <label for="female">Female</label>
-        <input type="radio" id="other" name="gender" value="other">
+        <input type="radio" name="gender" class="selectedGender" value="other">
         <label for="other">Other</label>
 
         <br>
 
         <p id="p3">Please select your age:</p>
-        <input type="radio" id="age1" name="age" value="30">
+        <input type="radio" class="selectedAge" name="age" value="30">
         <label for="age1">0 - 30</label>
-        <input type="radio" id="age2" name="age" value="60">
+        <input type="radio" class="selectedAge" name="age" value="60">
         <label for="age2">31 - 60</label>
-        <input type="radio" id="age3" name="age" value="100">
+        <input type="radio" class="selectedAge" name="age" value="100">
         <label for="age3">61 - 100</label><br>
-        <input type="submit" value="Submit" id="form"><br>
+        <input type="button" value="Submit" id="submit"><br>
     </form>
 </body>
 
