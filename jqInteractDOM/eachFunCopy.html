@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('label').css('color', 'green');
+            //click using ID Selector
+            $("#submit").click(function () {
+                var gender = $("input[name=gender]:radio:checked").val();
+                var age = $("input[name=age]:radio:checked").val();
+                $("input[type=text]").each(function () {
+                    var formData = $(this).val();
+                    console.log(formData);
+                });
+                console.log(gender);
+                console.log(age);
+            });
+
+            //css using ID selector tag
+            $('#p1,#p2,#p3').css('color', 'red');
+
+            //css using class selector
+            $('.padding').css('margin-top', '1em');
+            $('.alignment').css({ 'text-align': 'center', 'color': 'blue' });
+            //INPUT SELECTORS
+            var exampleInput = $(':text');
+            $('form').append(" found " + exampleInput.length + " InputElements ");
+
+            $('#submit').css({ 'margin': '1rem 0', 'color': 'white', 'background-color': 'green' });
+
+
+        });
+    </script>
+    <script>
+
+    </script>
+</head>
+
+<body>
+    <h1 class="alignment">Information Form</h1>
+    <form>
+        <label>FirstName:</label>
+        <input type="text" class="padding"><br />
+        <label>LastName:</label>
+        <input type="text" class="padding"><br />
+        <label>MidName:</label>
+        <input type="text" class="padding"> <br />
+        <label>MoblieNo:</label>
+        <input type="text" name="mobile" class="padding"><br />
+        <P id="p1">Please fill your social media details:</P>
+        <label>FbID:</label>
+        <input type="text">
+        <label>InstrID:</label>
+        <input type="text">
+        <label>WhatsAPPNo:</label>
+        <input type="text">
+        <p id="p2">Please select your gender:</p>
+        <input type="radio" name="gender" class="selectedGender" value="male">
+        <label for="male">Male</label>
+        <input type="radio" name="gender" class="selectedGender" value="female">
+        <label for="female">Female</label>
+        <input type="radio" name="gender" class="selectedGender" value="other">
+        <label for="other">Other</label>
+
+        <br>
+
+        <p id="p3">Please select your age:</p>
+        <input type="radio" class="selectedAge" name="age" value="30">
+        <label for="age1">0 - 30</label>
+        <input type="radio" class="selectedAge" name="age" value="60">
+        <label for="age2">31 - 60</label>
+        <input type="radio" class="selectedAge" name="age" value="100">
+        <label for="age3">61 - 100</label><br>
+        <input type="button" value="Submit" id="submit"><br>
+    </form>
+</body>
+
+</html>
