@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" type="text/javascript">
+    </script>
+    <style>
+        h1,
+        h2,
+        h3,
+        span {
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 16rem;
+        }
+
+        h2 {
+            font-size: 3rem;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+        }
+
+        span {
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        .container {
+            border: 1px solid black;
+            text-align: center;
+            /* max-width: 550px;
+	height: 100vh;
+	margin: 0 auto;
+	display: grid;
+	grid-template-rows: 20% 80%;
+	padding: 25px 5px; */
+        }
+
+        .degrees {
+            display: grid;
+            grid-template-columns: auto auto;
+            justify-content: center;
+            margin-left: 2rem;
+        }
+
+        img {
+            width: 80px;
+            filter: grayscale(100%);
+        }
+    </style>
+</head>
+
+<body>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#country').css({
+                'text-align': 'center',
+                'font-size': '11'
+            });
+
+
+            // Get Location 
+            navigator.geolocation.getCurrentPosition(success, error);
+
+            function success(pos) {
+                var lat = pos.coords.latitude;
+                var long = pos.coords.longitude;
+                weather(lat, long);
+            }
+
+            function error() {
+                console.log('There was an error');
+            }
+
+            // Call Weather
+            function weather(lat, long) {
+                var URL = `https://fcc-weather-api.glitch.me/api/current?lat=${lat}&lon=${long}`;
+
+                $.getJSON(URL, function (data) {
+                    console.log(data);
+                    updateDOM(data);
+                });
+            }
+
+            // Update Dom
+            function updateDOM(data) {
+                var city = data.name;
+                var country = data.sys.country;
+                var pressure = data.main.pressure;
+                var windSpeed = data.wind.speed;
+                var windDirection = data.wind.direction;
+                var humidity = data.main.humidity;
+                var sunrise = new Date(data.sys.sunrise);
+                var sunset = new Date(data.sys.sunset);
+                var temp = Math.round(data.main.temp_max);
+                var desc = data.weather[0].description;
+                var icon = data.weather[0].icon;
+
+                $('#city').html(city);
+                $('#country').html(country);
+                $('#pressure').html(pressure).append('<span"font-size: 8px">hpa   pressure</span>');
+                $('#windSpeed').html(windSpeed).append('<span"font-size: 8px">mph  windSpeed</span>');
+                $('#humidity').html(humidity).append('<span"font-size: 8px">%   humididty</span>');
+                $('#sunrise').html(sunrise);
+                $('#sunset').html(sunset);
+
+                $('#temp').html(temp);
+                $('#desc').html(desc);
+                $('#icon').attr('src', icon);
+            }
+        });
+    </script>
+
+    <div class="container">
+
+        <h4 id="city"><span id="country"></span></h4>
+        <h4 id="country"></h4>
+        <h4 id="pressure"></h4>
+        <h4 id="windSpeed"></h4>
+        <h4 id="humidity"></h4>
+        <h4 id="sunrise"></h4>
+        <h4 id="sunset"></h4>
+
+
+        <div class="middle">
+            <img src="" alt="icon" id="icon">
+            <div class="degrees">
+                <h2 id="temp"></h1>
+                <span>&#176;</span>
+            </div>
+            <h3 id="desc"></h3>
+        </div>
+
+    </div>
+</body>
+
+</html>
